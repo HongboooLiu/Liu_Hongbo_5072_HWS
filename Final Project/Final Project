@@ -1,0 +1,13 @@
+Name: Comics Home API
+Type: API
+description: Comics Home is a website for Comic books in Chinese. I can used the api to know the categories of each comic book, the rating of each comic book, the 
+recommendation books. the browing histroy of one user......
+Links to data sources / API etc: https://m.dmzj.com/
+https://v3api.dmzj.com/articl
+Steps: 1. Check the api key to access the data 
+       2. Understand the api commend
+       3. Build the functions
+       4. Upload the functions to github
+       5. Add the Sphnix documentation
+       6. Upload to Pypi
+       
