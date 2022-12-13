@@ -1,0 +1,23 @@
+:py:mod:`comic_home_api`
+========================
+
+.. py:module:: comic_home_api
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   comic_home_api/index.rst
+
+
+Package Contents
+----------------
+
+.. py:data:: __version__
+   
+
+   
+

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; comic_home_api  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> comic_home_api
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html#comic-home-api-is-a-api-package-used-to-extract-data-from-comic-home-website-https-m-dmzj-com">comic_home_api is a api package used to extract data from Comic Home website: https://m.dmzj.com/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">comic_home_api</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Light_novel_recommendation.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>Comic Home website also recommends different light novels everyday, we can get this recommend list through function get_novel_recomm(). Here is an example, the recommended light novel today:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">comic_home_api</span> <span class="kn">import</span> <span class="n">comic_home_api</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">comic_home_api</span> <span class="kn">import</span> <span class="n">comic_home_api</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;comic_home_api&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comic_home_api</span><span class="o">.</span><span class="n">get_novel_recomm</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: 2948,
+  &#39;title&#39;: &#39;从本能寺开始与信长统一天下&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/16/bnsxc1006l.jpg&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 2948,
+  &#39;type&#39;: 2},
+ {&#39;id&#39;: 3483,
+  &#39;title&#39;: &#39;利里耶国骑士团与辛德瑞拉的弦音&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/11/ll1213l.jpg&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 3483,
+  &#39;type&#39;: 2},
+ {&#39;id&#39;: 3482,
+  &#39;title&#39;: &#39;爱的告别式&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/10/agb1211l.jpg&#39;,
+  &#39;status&#39;: &#39;已完结&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 3482,
+  &#39;type&#39;: 2},
+ {&#39;id&#39;: 3944,
+  &#39;obj_id&#39;: 2215,
+  &#39;title&#39;: &#39;熊熊勇闯异世界&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/28/xxx1021l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：くまなの&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3945,
+  &#39;obj_id&#39;: 1522,
+  &#39;title&#39;: &#39;期待在地下城邂逅有错吗&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/13/zdxcxqxhsfgclsm676l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：大森藤野&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3946,
+  &#39;obj_id&#39;: 2895,
+  &#39;title&#39;: &#39;众神眷顾的男人&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/0/ssn0702l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：Roy&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3941,
+  &#39;obj_id&#39;: 1800,
+  &#39;title&#39;: &#39;转生史莱姆 2期&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/27/gywzshcwslmdnjs9l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;1月播出&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3942,
+  &#39;obj_id&#39;: 2486,
+  &#39;title&#39;: &#39;好比最终迷宫前的村庄里的少年到新手村生活般的故事&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/11/sn0514l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;1月播出&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3943,
+  &#39;obj_id&#39;: 2597,
+  &#39;title&#39;: &#39;只有我能进入的隐藏迷宫～低调锻炼化身世界最强～ &#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/26/yc1215l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;1月播出&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 1936,
+  &#39;obj_id&#39;: 471,
+  &#39;title&#39;: &#39;文学少女&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/5/wxsn68l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：野村美月&#39;,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 1938,
+  &#39;obj_id&#39;: 244,
+  &#39;title&#39;: &#39;狼与香辛料&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/15/lyxxl6869l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：支仓冻砂&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 1602,
+  &#39;obj_id&#39;: 271,
+  &#39;title&#39;: &#39;凉宫春日物语&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/12/160329lianggong.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：谷川流&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 1168,
+  &#39;obj_id&#39;: 239,
+  &#39;title&#39;: &#39;零之使魔&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/25/lingzhishimo151117l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：山口升&#39;,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 1607,
+  &#39;obj_id&#39;: 824,
+  &#39;title&#39;: &#39;伯爵与妖精&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/2/bjyyj8989l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：谷瑞惠&#39;,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 1603,
+  &#39;obj_id&#39;: 129,
+  &#39;title&#39;: &#39;钢壳都市雷吉欧斯&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/29/160329gangke.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：雨木シュウスケ&#39;,
+  &#39;status&#39;: &#39;已完结&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each element in this list is a light novel, the title is the title of this book, the cover is the link to the image of this book and type equals to 2 means it’s light novel.</p>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hongbo Liu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

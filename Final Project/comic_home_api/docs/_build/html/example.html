@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example usage &mdash; comic_home_api  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="comic_home_api" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> comic_home_api
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#news">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#comic-books-recommendation">Comic books recommendation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#light-novel-recommendation">Light novel recommendation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#search-for-light-novels-and-comic-books">Search for light novels and comic books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">comic_home_api</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Example usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/example.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-usage">
+<h1>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this heading"></a></h1>
+<p>comic_home_api is a api package used to extract data from Comic Home website: https://m.dmzj.com/</p>
+<p>We can first install this package from pypi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install comic_home_api
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting comic_home_api
+  Using cached comic_home_api-0.1.0-py3-none-any.whl (3.4 kB)
+Installing collected packages: comic-home-api
+Successfully installed comic-home-api-0.1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="news">
+<h1>News<a class="headerlink" href="#news" title="Permalink to this heading"></a></h1>
+<p>We can use get_news() to find out the recommended news everyday.Here the title is the title for the news, the pic_url is the link to the image in this news and the object_url is the link to the news in the official website.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">comic_home_api</span> <span class="kn">import</span> <span class="n">comic_home_api</span>
+<span class="n">comic_home_api</span><span class="o">.</span><span class="n">get_news</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;code&#39;: 0,
+ &#39;msg&#39;: &#39;成功&#39;,
+ &#39;data&#39;: [{&#39;id&#39;: 5157,
+   &#39;title&#39;: &#39;间谍过家家获搜索大奖！12月1周汇总&#39;,
+   &#39;pic_url&#39;: &#39;https://images.dmzj.com/news/recommend/16704069624248.jpg&#39;,
+   &#39;object_id&#39;: 76418,
+   &#39;object_url&#39;: &#39;https://v3api.dmzj.com/article/show/v2/76418.html&#39;},
+  {&#39;id&#39;: 4847,
+   &#39;title&#39;: &#39;目标！让B站送我们小电视！&#39;,
+   &#39;pic_url&#39;: &#39;https://images.dmzj.com/news/recommend/16709223243192.jpg&#39;,
+   &#39;object_id&#39;: 76526,
+   &#39;object_url&#39;: &#39;https://v3api.dmzj.com/article/show/v2/76526.html&#39;},
+  {&#39;id&#39;: 5158,
+   &#39;title&#39;: &#39;美图推荐——渐变发色特辑&#39;,
+   &#39;pic_url&#39;: &#39;https://images.dmzj.com/news/recommend/16704069951472.jpg&#39;,
+   &#39;object_id&#39;: 76452,
+   &#39;object_url&#39;: &#39;https://v3api.dmzj.com/article/show/v2/76452.html&#39;},
+  {&#39;id&#39;: 5159,
+   &#39;title&#39;: &#39;东京动画奖2023&#39;,
+   &#39;pic_url&#39;: &#39;https://images.dmzj.com/news/recommend/16704070197621.jpg&#39;,
+   &#39;object_id&#39;: 76442,
+   &#39;object_url&#39;: &#39;https://v3api.dmzj.com/article/show/v2/76442.html&#39;},
+  {&#39;id&#39;: 5160,
+   &#39;title&#39;: &#39;灌篮高手首周末票房近13亿日元&#39;,
+   &#39;pic_url&#39;: &#39;https://images.dmzj.com/news/recommend/16704070444469.jpg&#39;,
+   &#39;object_id&#39;: 76429,
+   &#39;object_url&#39;: &#39;https://v3api.dmzj.com/article/show/v2/76429.html&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comic-books-recommendation">
+<h1>Comic books recommendation<a class="headerlink" href="#comic-books-recommendation" title="Permalink to this heading"></a></h1>
+<p>Comic Home website recommends different comic books everyday, we can get this recommend list through function get_comic_recomm(). Here is an example, the recommended comic books today.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comic_home_api</span><span class="o">.</span><span class="n">get_comic_recomm</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/4/snbqxycwjr20210710.jpg&#39;,
+  &#39;title&#39;: &#39;兵器少女&#39;,
+  &#39;sub_title&#39;: &#39;作者：ななてる&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 61113,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/8/zqybsn1124.jpg&#39;,
+  &#39;title&#39;: &#39;佣兵少女&#39;,
+  &#39;sub_title&#39;: &#39;作者：笹塔五郎&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 59033,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/16/xianjingshaonv116.jpg&#39;,
+  &#39;title&#39;: &#39;陷阱少女&#39;,
+  &#39;sub_title&#39;: &#39;作者：绿山のぶひろ&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 43288,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/221117xinman112.jpg&#39;,
+  &#39;title&#39;: &#39;新漫周刊第112期&#39;,
+  &#39;sub_title&#39;: &#39;新漫周刊第112期&#39;,
+  &#39;type&#39;: 5,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 492,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/221012weilaimanhuajia01.jpg&#39;,
+  &#39;title&#39;: &#39;未来漫画家·评选结果公布！&#39;,
+  &#39;sub_title&#39;: &#39;未来漫画家·评选结果公布！&#39;,
+  &#39;type&#39;: 5,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 489,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/221021youxiwangtj01.jpg&#39;,
+  &#39;title&#39;: &#39;出发！从零开始的游戏王环境之旅！&#39;,
+  &#39;sub_title&#39;: &#39;出发！从零开始的游戏王环境之旅！&#39;,
+  &#39;type&#39;: 6,
+  &#39;url&#39;: &#39;https://zt.dmzj.com/ygohistory/&#39;,
+  &#39;obj_id&#39;: 0,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/220822xinman111.jpg&#39;,
+  &#39;title&#39;: &#39;新漫周刊第111期&#39;,
+  &#39;sub_title&#39;: &#39;新漫周刊第111期&#39;,
+  &#39;type&#39;: 5,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 486,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/150_200/171211qiubenzhi.jpg&#39;,
+  &#39;title&#39;: &#39;秋本治&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 8,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 1147,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/150_200/171211shuishangwuzhi.jpg&#39;,
+  &#39;title&#39;: &#39;水上悟志&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 8,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 1705,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/150_200/170707zhicunguizi.jpg&#39;,
+  &#39;title&#39;: &#39;志村贵子&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 8,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 147,
+  &#39;status&#39;: &#39;&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/12/1146966321645106095.jpg&#39;,
+  &#39;title&#39;: &#39;猛汉男仆&#39;,
+  &#39;sub_title&#39;: &#39;作者：普通纸工作室&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 63825,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/12/1146966321648713207.jpg&#39;,
+  &#39;title&#39;: &#39;逆灵千岁&#39;,
+  &#39;sub_title&#39;: &#39;作者：普通纸工作室&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 64399,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/3/1109466231620720862.jpg&#39;,
+  &#39;title&#39;: &#39;小神仙&#39;,
+  &#39;sub_title&#39;: &#39;作者：阿喜不咕不咕&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 54096,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/16/1095999961565845960.jpg&#39;,
+  &#39;title&#39;: &#39;春雪&#39;,
+  &#39;sub_title&#39;: &#39;作者：haruru&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 49648,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/13/1625197595.jpg&#39;,
+  &#39;title&#39;: &#39;喜欢的女孩子，就像水蜜桃&#39;,
+  &#39;sub_title&#39;: &#39;作者：I am haruru&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 61023,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/13/1625625863.jpg&#39;,
+  &#39;title&#39;: &#39;Beats&#39;,
+  &#39;sub_title&#39;: &#39;作者：I am haruru&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 61086,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/0829mimidiguo.jpg&#39;,
+  &#39;title&#39;: &#39;秘密帝国&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 40252,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/0829jinshu.jpg&#39;,
+  &#39;title&#39;: &#39;黑暗之夜-金属&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 41249,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/0426zhujiezhizhan320.jpg&#39;,
+  &#39;title&#39;: &#39;诸界之战&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 47990,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/0829wuxianzhanzheng.jpg&#39;,
+  &#39;title&#39;: &#39;无限战争&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 45080,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/17/zayuzayuzayulaoshi.jpg&#39;,
+  &#39;title&#39;: &#39;杂~鱼~杂鱼杂鱼老师&#39;,
+  &#39;sub_title&#39;: &#39;作者：ぜろよん&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 67428,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/8/bhanpszp20221205.jpg&#39;,
+  &#39;title&#39;: &#39;被暗黑女仆所支配&#39;,
+  &#39;sub_title&#39;: &#39;作者：八坂アキヲ/相川有&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 67811,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/1/rgjxlzbtldngzshzy20211029.jpg&#39;,
+  &#39;title&#39;: &#39;如果救下了准备跳楼的女高中生会怎样？&#39;,
+  &#39;sub_title&#39;: &#39;作者：うるひこ/岸马きらく&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 62465,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/5/wdwylpjsrqox20221202.jpg&#39;,
+  &#39;title&#39;: &#39;我的网游老婆竟是人气偶像~冰山系的她现实中也想嫁给我~&#39;,
+  &#39;sub_title&#39;: &#39;作者：あボーン/もっつぉ&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 67766,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/4/kdjoaztx20220630.jpg&#39;,
+  &#39;title&#39;: &#39;我看得见哦！爱泽同学&#39;,
+  &#39;sub_title&#39;: &#39;作者：棘尾どろしー&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 65716,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/webpic/15/xiangchidiaowodefeirenshaonv58.jpg&#39;,
+  &#39;title&#39;: &#39;想吃掉我的非人少女&#39;,
+  &#39;sub_title&#39;: &#39;作者：苗川采&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 56324,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/160802qingmeizhuma.jpg&#39;,
+  &#39;title&#39;: &#39;完全没有恋爱感情的青梅竹马&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 33322,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/190228mianbaodailaiheping.jpg&#39;,
+  &#39;title&#39;: &#39;面包带来和平&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 21524,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/keleimiyuwangzhijai190228.jpg&#39;,
+  &#39;title&#39;: &#39;克雷米与王之家&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 45838,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;cover&#39;: &#39;https://images.dmzj.com/tuijian/320_170/190228heixinqiyezhiyuanbianchengmao.jpg&#39;,
+  &#39;title&#39;: &#39;黑心企业的职员变成猫之后人生有了转变的故事&#39;,
+  &#39;sub_title&#39;: &#39;&#39;,
+  &#39;type&#39;: 1,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 47515,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 67901,
+  &#39;title&#39;: &#39;大叔狩猎&#39;,
+  &#39;authors&#39;: &#39;つくすん&#39;,
+  &#39;status&#39;: &#39;已完结&#39;,
+  &#39;cover&#39;: &#39;https://images.dmzj.com/webpic/12/dashushoulie.jpg&#39;},
+ {&#39;id&#39;: 67900,
+  &#39;title&#39;: &#39;甘井妹妹和可怜的哥哥&#39;,
+  &#39;authors&#39;: &#39;らきろろむ&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;cover&#39;: &#39;https://images.dmzj.com/webpic/10/ganjingmeimeiekelendegege.jpg&#39;},
+ {&#39;id&#39;: 67899,
+  &#39;title&#39;: &#39;女汉子的世界观&#39;,
+  &#39;authors&#39;: &#39;达西&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;cover&#39;: &#39;https://images.dmzj.com/img/webpic/6/1093044461670806062.jpg&#39;},
+ {&#39;id&#39;: 67898,
+  &#39;title&#39;: &#39;女高中生和笠地蔵&#39;,
+  &#39;authors&#39;: &#39;ぽて&#39;,
+  &#39;status&#39;: &#39;已完结&#39;,
+  &#39;cover&#39;: &#39;https://images.dmzj.com/webpic/4/dnaujsxasdas202221213.jpg&#39;},
+ {&#39;id&#39;: 67897,
+  &#39;title&#39;: &#39;闲散二人的缥缈乐园&#39;,
+  &#39;authors&#39;: &#39;baba&#39;,
+  &#39;status&#39;: &#39;已完结&#39;,
+  &#39;cover&#39;: &#39;https://images.dmzj.com/webpic/4/1erdpmly20221213.jpg&#39;},
+ {&#39;id&#39;: 67896,
+  &#39;title&#39;: &#39;收下老公的童贞&#39;,
+  &#39;authors&#39;: &#39;神山とく&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;cover&#39;: &#39;https://images.dmzj.com/webpic/0/awdawgseg20212213.jpg&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each element in this list is a comic book, the title is the title of this book, the cover is the link to the image of this book and type equals to 1 means it’s comic book.</p>
+</section>
+<section id="light-novel-recommendation">
+<h1>Light novel recommendation<a class="headerlink" href="#light-novel-recommendation" title="Permalink to this heading"></a></h1>
+<p>Comic Home website also recommends different light novels everyday, we can get this recommend list through function get_novel_recomm(). Here is an example, the recommended light novel today:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comic_home_api</span><span class="o">.</span><span class="n">get_novel_recomm</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: 2948,
+  &#39;title&#39;: &#39;从本能寺开始与信长统一天下&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/16/bnsxc1006l.jpg&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 2948,
+  &#39;type&#39;: 2},
+ {&#39;id&#39;: 3483,
+  &#39;title&#39;: &#39;利里耶国骑士团与辛德瑞拉的弦音&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/11/ll1213l.jpg&#39;,
+  &#39;status&#39;: &#39;连载中&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 3483,
+  &#39;type&#39;: 2},
+ {&#39;id&#39;: 3482,
+  &#39;title&#39;: &#39;爱的告别式&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/10/agb1211l.jpg&#39;,
+  &#39;status&#39;: &#39;已完结&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;obj_id&#39;: 3482,
+  &#39;type&#39;: 2},
+ {&#39;id&#39;: 3944,
+  &#39;obj_id&#39;: 2215,
+  &#39;title&#39;: &#39;熊熊勇闯异世界&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/28/xxx1021l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：くまなの&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3945,
+  &#39;obj_id&#39;: 1522,
+  &#39;title&#39;: &#39;期待在地下城邂逅有错吗&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/13/zdxcxqxhsfgclsm676l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：大森藤野&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3946,
+  &#39;obj_id&#39;: 2895,
+  &#39;title&#39;: &#39;众神眷顾的男人&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/0/ssn0702l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：Roy&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3941,
+  &#39;obj_id&#39;: 1800,
+  &#39;title&#39;: &#39;转生史莱姆 2期&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/27/gywzshcwslmdnjs9l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;1月播出&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3942,
+  &#39;obj_id&#39;: 2486,
+  &#39;title&#39;: &#39;好比最终迷宫前的村庄里的少年到新手村生活般的故事&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/11/sn0514l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;1月播出&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 3943,
+  &#39;obj_id&#39;: 2597,
+  &#39;title&#39;: &#39;只有我能进入的隐藏迷宫～低调锻炼化身世界最强～ &#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/26/yc1215l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;1月播出&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 1936,
+  &#39;obj_id&#39;: 471,
+  &#39;title&#39;: &#39;文学少女&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/5/wxsn68l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：野村美月&#39;,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 1938,
+  &#39;obj_id&#39;: 244,
+  &#39;title&#39;: &#39;狼与香辛料&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/15/lyxxl6869l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：支仓冻砂&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 1602,
+  &#39;obj_id&#39;: 271,
+  &#39;title&#39;: &#39;凉宫春日物语&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/12/160329lianggong.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：谷川流&#39;,
+  &#39;status&#39;: &#39;连载中&#39;},
+ {&#39;id&#39;: 1168,
+  &#39;obj_id&#39;: 239,
+  &#39;title&#39;: &#39;零之使魔&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/25/lingzhishimo151117l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：山口升&#39;,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 1607,
+  &#39;obj_id&#39;: 824,
+  &#39;title&#39;: &#39;伯爵与妖精&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/2/bjyyj8989l.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：谷瑞惠&#39;,
+  &#39;status&#39;: &#39;已完结&#39;},
+ {&#39;id&#39;: 1603,
+  &#39;obj_id&#39;: 129,
+  &#39;title&#39;: &#39;钢壳都市雷吉欧斯&#39;,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/29/160329gangke.jpg&#39;,
+  &#39;url&#39;: &#39;&#39;,
+  &#39;type&#39;: 2,
+  &#39;sub_title&#39;: &#39;作者：雨木シュウスケ&#39;,
+  &#39;status&#39;: &#39;已完结&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each element in this list is a light novel, the title is the title of this book, the cover is the link to the image of this book and type equals to 2 means it’s light novel.</p>
+</section>
+<section id="search-for-light-novels-and-comic-books">
+<h1>Search for light novels and comic books<a class="headerlink" href="#search-for-light-novels-and-comic-books" title="Permalink to this heading"></a></h1>
+<p>We can also search the comic books or light novel by function search(big_cat_id,keywords,page). Here for the big_cat_id, 0 means we want to search for comic books and 1 means light novels. And the keywords is the book name we want to search and the page is the page of the searching results. Here is an example, we tried to search for a light novel named “云霄飞车”, a translated version of the classic horrow novel “Game land”. So the big_cat_id here is 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comic_home_api</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;云霄飞车&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_biz&#39;: &#39;lnovel_lnovels&#39;,
+  &#39;addtime&#39;: 1275481526,
+  &#39;authors&#39;: &#39;山田悠介&#39;,
+  &#39;copyright&#39;: 0,
+  &#39;cover&#39;: &#39;https://xs.dmzj.com/img/webpic/7/699M.jpg&#39;,
+  &#39;hidden&#39;: 0,
+  &#39;hot_hits&#39;: 10443,
+  &#39;last_name&#39;: &#39;第一卷\r&#39;,
+  &#39;status&#39;: 0,
+  &#39;title&#39;: &#39;8.1 云霄飞车&#39;,
+  &#39;types&#39;: &#39;恐怖&#39;,
+  &#39;id&#39;: 650}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here the “title” is the title of our searched book, “types” is the category of this book in chinese, the “cover” is the link to the cover image and the “author” is the author of this book.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="comic_home_api" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hongbo Liu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

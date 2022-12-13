@@ -1,0 +1,82 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "fEzVJ7WPkzZP"
+   },
+   "source": [
+    "We can also search the comic books or light novel by function search(big_cat_id,keywords,page). Here for the big_cat_id, 0 means we want to search for comic books and 1 means light novels. And the keywords is the book name we want to search and the page is the page of the searching results. Here is an example, we tried to search for a light novel named \"云霄飞车\", a translated version of the classic horrow novel \"Game land\". So the big_cat_id here is 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "0546inovjpRB",
+    "outputId": "aa0febd3-3485-412b-ec91-6823eba8ec05"
+   },
+   "outputs": [
+    {
+     "ename": "ModuleNotFoundError",
+     "evalue": "No module named 'comic_home_api'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
+      "Input \u001b[1;32mIn [1]\u001b[0m, in \u001b[0;36m<cell line: 1>\u001b[1;34m()\u001b[0m\n\u001b[1;32m----> 1\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m \u001b[38;5;21;01mcomic_home_api\u001b[39;00m \u001b[38;5;28;01mimport\u001b[39;00m comic_home_api\n\u001b[0;32m      2\u001b[0m comic_home_api\u001b[38;5;241m.\u001b[39msearch(\u001b[38;5;241m1\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m云霄飞车\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;241m1\u001b[39m)\u001b[38;5;241m.\u001b[39mjson()\n",
+      "\u001b[1;31mModuleNotFoundError\u001b[0m: No module named 'comic_home_api'"
+     ]
+    }
+   ],
+   "source": [
+    "from comic_home_api import comic_home_api\n",
+    "comic_home_api.search(1,\"云霄飞车\",1).json()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "x-yRqSNUn-ao"
+   },
+   "source": [
+    "Here the \"title\" is the title of our searched book, \"types\" is the category of this book in chinese, the \"cover\" is the link to the cover image and the \"author\" is the author of this book."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "QVLg1Wf9oXwn"
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
