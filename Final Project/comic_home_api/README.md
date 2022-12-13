@@ -4,6 +4,8 @@ An api package for Comic Home
 
 ## The Sphinx documentation is at Liu_Hongbo/Final Project/comic_home_api/docs/_build/html/
 
+## This package is uploaded to pypi, here is the link: https://pypi.org/project/comic-home-api/#description
+
 ## Installation
 
 ```bash
