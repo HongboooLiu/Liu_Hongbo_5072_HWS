@@ -2,7 +2,7 @@
 
 An api package for Comic Home
 
-# The Sphinx documentation is at Liu_Hongbo/Final Project/comic_home_api/docs/_build/html/
+## The Sphinx documentation is at Liu_Hongbo/Final Project/comic_home_api/docs/_build/html/
 
 ## Installation
 
